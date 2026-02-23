@@ -1,5 +1,5 @@
 global:
-  domain: font-cdn.alice-platform.com
+  domain: font-cdn.alicelaw.net
 frontend:
   replicas: 2
   image: font-cdn/frontend:latest
