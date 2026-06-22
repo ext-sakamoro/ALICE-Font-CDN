@@ -11,11 +11,7 @@ use axum::{
     Router,
 };
 use serde::{Deserialize, Serialize};
-use std::{
-    net::SocketAddr,
-    sync::Arc,
-    time::Instant,
-};
+use std::{net::SocketAddr, sync::Arc, time::Instant};
 use tracing::info;
 use tracing_subscriber::EnvFilter;
 
@@ -126,10 +122,7 @@ async fn compress(
         ));
     }
     if req.quality > 100 {
-        return Err((
-            StatusCode::BAD_REQUEST,
-            "quality must be 0-100".to_string(),
-        ));
+        return Err((StatusCode::BAD_REQUEST, "quality must be 0-100".to_string()));
     }
     if req.font_name.trim().is_empty() {
         return Err((StatusCode::BAD_REQUEST, "font_name is required".to_string()));
@@ -289,7 +282,12 @@ async fn analyze(
                 132.0,
                 false,
                 0,
-                vec!["kern".to_string(), "liga".to_string(), "dlig".to_string(), "calt".to_string()],
+                vec![
+                    "kern".to_string(),
+                    "liga".to_string(),
+                    "dlig".to_string(),
+                    "calt".to_string(),
+                ],
             ),
             name if name.contains("inter") => (
                 3_990,
@@ -299,14 +297,7 @@ async fn analyze(
                 0,
                 vec!["kern".to_string(), "ss01".to_string(), "cv01".to_string()],
             ),
-            _ => (
-                1_200,
-                "ttf",
-                80.0,
-                false,
-                0,
-                vec!["kern".to_string()],
-            ),
+            _ => (1_200, "ttf", 80.0, false, 0, vec!["kern".to_string()]),
         };
 
     info!(font = %req.font_name, "font analyze request");
