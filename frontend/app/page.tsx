@@ -74,7 +74,7 @@ export default function HomePage() {
 
       {/* Footer */}
       <footer className="border-t border-white/10 px-6 py-8 text-center text-xs text-gray-600">
-        ALICE Font CDN &mdash; AGPL-3.0
+        ALICE Font CDN &mdash; LicenseRef-Proprietary
       </footer>
     </main>
   );
